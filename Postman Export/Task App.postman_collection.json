@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "75bfdcbf-4037-4d7f-ae29-bea710a98227",
+		"name": "Task App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4793369"
+	},
+	"item": [
+		{
+			"name": "Create a Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"title\",\n    \"description\":\"description\",\n    \"completed\":\"true\",\n    \"completedDate\":\"2023-10-23 18:30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/create-task",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Tasks",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task By Id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update a task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"title2\",\n    \"description\":\"description2\",\n    \"completed\":\"true\",\n    \"completedDate\":\"2023-10-23T18:30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/task/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"task",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
