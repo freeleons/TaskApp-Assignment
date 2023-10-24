@@ -9,5 +9,5 @@ public interface TaskService {
     Task createTask(Task task);
     Optional<Task> getTaskById(Long id);
     Task updateTask(Long id, Task task);
-    List getAllTasks();
+    List<Task> getAllTasks();
 }

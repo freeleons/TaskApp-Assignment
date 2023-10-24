@@ -1,60 +1,55 @@
 package com.demo.taskapp.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
+@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Task {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
     private String title;
+    @Getter
     private Boolean completed;
-    private Date createdDate;
-    private Date completedDate;
-
-    public String getTitle() {
-        return title;
-    }
+    @Getter
+    @CreatedDate
+    private LocalDateTime createdDate;
+    @Getter
+    private String description;
+    private LocalDateTime completedDate;
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    private String description;
 
-    public Boolean getCompleted() {
-        return completed;
-    }
 
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Date getCompletedDate() {
+    public LocalDateTime getCompletedDate() {
         return completedDate;
     }
 
-    public void setCompletedDate(Date completedDate) {
+    public void setCompletedDate(LocalDateTime completedDate) {
         this.completedDate = completedDate;
     }
 

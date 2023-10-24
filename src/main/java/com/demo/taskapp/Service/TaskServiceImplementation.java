@@ -29,11 +29,12 @@ public class TaskServiceImplementation implements TaskService{
         Optional<Task> optionalTask=taskRepository.findById(id);
         if(optionalTask.isPresent()) {
             Task updateTask = optionalTask.get();
+            updateTask.setId(id);
             updateTask.setTitle(task.getDescription());
             updateTask.setDescription(task.getDescription());
             updateTask.setCompleted(task.getCompleted());
             updateTask.setCompletedDate(task.getCompletedDate());
-            return taskRepository.save(task);
+            return taskRepository.save(updateTask);
         }
         else
         {
@@ -42,7 +43,7 @@ public class TaskServiceImplementation implements TaskService{
     }
 
     @Override
-    public List getAllTasks() {
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 }
