@@ -8,7 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,33 +32,33 @@ public class TaskRestController {
     }
 
 
-    @RequestMapping(value = "/tasks",
-            method = GET,
-            produces = "application/json")
+    @GetMapping(value = "/tasks",
+    
+           produces = "application/json")
     List<Task> getTasks() {
         logger.info("getTasks() method called");
         return taskService.getAllTasks();
     }
 
-    @RequestMapping(value = "/task/{id}",
-            method = GET,
-            produces = "application/json")
+    @GetMapping(value = "/task/{id}",
+    
+           produces = "application/json")
     Task getTaskById(@PathVariable Long id) {
         logger.info("getTaskById() method called, id = " + id.toString());
         return taskService.getTaskById(id).orElse(null);
     }
 
-    @RequestMapping(value = "/create-task",
-            method = POST,
-            consumes = "application/json")
+    @PostMapping(value = "/create-task",
+    
+           consumes = "application/json")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         logger.info("createTask() method called");
         return ResponseEntity.ok(taskService.createTask(task));
     }
 
-    @RequestMapping(value = "/update-task/{id}",
-            method = PUT,
-            consumes = "application/json")
+    @PutMapping(value = "/update-task/{id}",
+    
+           consumes = "application/json")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         logger.info("updateTask() method called, id = " + id.toString());
         return ResponseEntity.ok(taskService.updateTask(id, task));
